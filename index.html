@@ -1,14 +1,111 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Simple E-Commerce Demo</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <h4>The Shahin Bhai </h4>
+  <header>
+    <div class="brand">
+      <div class="logo">EC</div>
+      <div>
+        <div style="font-weight:800; font-size:16px">Simple E-Commerce</div>
+        <div style="font-size:12px; opacity:.9">Demo shop - কপি করে চালান</div>
+      </div>
+    </div>
+
+    <div class="search-wrap">
+      <input id="searchBox" placeholder="প্রোডাক্ট সার্চ করুন — যেমন: Mobile, Shoes..." />
+    </div>
+
+    <div class="header-actions">
+      <div class="muted" id="cartTotalPrice">0 ৳</div>
+      <button class="btn cart-btn" id="cartToggle">Cart <span class="cart-count" id="cartCount">0</span></button>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="top-controls">
+      <div class="controls-left">
+        <select id="categoryFilter" class="select">
+          <option value="all">সকল ক্যাটেগরি</option>
+        </select>
+
+        <select id="sortSelect" class="select">
+          <option value="popular">সাধারণ</option>
+          <option value="price-asc">দাম: কম→বেশি</option>
+          <option value="price-desc">দাম: বেশি→কম</option>
+        </select>
+      </div>
+
+      <div class="flex">
+        <button class="btn" id="clearFilters">Clear</button>
+      </div>
+    </div>
+
+    <section class="grid" id="productsGrid">
+      <!-- Products injected by JS -->
+    </section>
+  </main>
+
+  <!-- Cart Panel -->
+  <aside class="cart-panel" id="cartPanel" aria-hidden="true">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+      <h3 style="margin:0">তোমার কার্ট</h3>
+      <div>
+        <button class="btn" id="checkoutBtn">Checkout</button>
+      </div>
+    </div>
+
+    <div id="cartItems"></div>
+
+    <div style="margin-top:12px; display:flex; justify-content:space-between; align-items:center;">
+      <div class="muted">মোট</div>
+      <div style="font-weight:900; font-size:18px;" id="cartGrandTotal">0 ৳</div>
+    </div>
+
+    <div style="margin-top:12px; text-align:center;">
+      <button class="btn" id="clearCart">Clear Cart</button>
+    </div>
+  </aside>
+
+  <!-- Modal -->
+  <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" id="productModal">
+      <!-- Content injected -->
+    </div>
+  </div>
+
+  <!-- Checkout Modal (simple) -->
+  <div class="modal-backdrop" id="checkoutBackdrop" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" id="checkoutModal">
+
+      <h3>Checkout</h3>
+      <form id="checkoutForm" style="display:grid; gap:10px; margin-top:10px;">
+        <input class="input-small" id="name" placeholder="নাম" required />
+        <input class="input-small" id="email" placeholder="ই-মেইল" type="email" required />
+        <input class="input-small" id="number" placeholder="ফোন নম্বর" type="number" required />
+
+        <input class="input-small" id="address" placeholder="ডেলিভারি ঠিকানা" required />
+        <div style="display:flex; gap:8px;">
+          <button type="submit" class="btn">Confirm Order</button>
+          <button type="button" class="btn" id="checkoutCancel">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    © <span id="year"></span> Simple E-Commerce Demo — Offline/Frontend only
+  </footer>
+
+
+
+  <script src="script.js"></script>
 </body>
 
 </html>
